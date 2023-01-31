@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <div th:fragment="header1">
+        <header class="p-3 text-bg-dark">
+            <div class="container">
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li sec:authorize="hasAuthority('ADMIN')"><a href="/" class="nav-link px-2 fs-5 text-secondary">Фильмы</a></li>
+                    <li sec:authorize="hasAuthority('ADMIN')"><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/Edit/user">Пользователи</a></li>
+                    <li sec:authorize="hasAuthority('ADMIN')"><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/stat">Статистика</a></li>
+                    <li sec:authorize="!isAuthenticated()"> <a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/registration">Регистрация</a></li>
+                    <li sec:authorize="!isAuthenticated()"> <a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/login">Авторизация</a></li>
+                </ul>
+            </div>
+        </header>
+    </div>
+
+    <div th:fragment="header2">
+        <header class="p-3 text-bg-dark">
+            <div class="container">
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li sec:authorize="hasAuthority('USER')"><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/Edit/kinoteatr">Выбор кинотеатра</a></li>
+                    <li sec:authorize="hasAuthority('USER')"><a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/Edit/zabronirovannoe">Список броней</a></li>
+                    <li sec:authorize="!isAuthenticated()"> <a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/login">Выйти из аккаунта</a></li>
+                </ul>
+            </div>
+        </header>
+    </div>
+
+    <div th:fragment="header3">
+        <header class="p-3 text-bg-dark">
+            <div class="container">
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li sec:authorize="!isAuthenticated()"> <a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/registration">Регистрация</a></li>
+                    <li sec:authorize="!isAuthenticated()"> <a class="nav-link px-5 text-secondary fs-5 fw-bold" href="/login">Авторизация</a></li>
+                </ul>
+            </div>
+        </header>
+    </div>
+</head>
+<body>
+
+</body>
+</html>

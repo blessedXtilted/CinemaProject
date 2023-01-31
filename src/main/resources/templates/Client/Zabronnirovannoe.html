@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Список броней</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+    <div th:insert="static/Fragment :: header2"></div>
+</head>
+
+<style>
+    *,
+    *::before,
+    *::after{
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI Semibold', serif;
+        z-index: 0;
+    }
+
+    body{
+        /*margin-top: 20px;*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: floralwhite;
+    }
+    .main-container{
+        alignment: center;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        background-color: #FFEEC0;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        border-radius: 25px 0px 25px 0px;
+
+    }
+    .dish-info{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .menu-photo{
+        width: 600px;
+        height: auto;
+        border-radius: 16px 0 0 16px;
+        object-fit: contain;
+    }
+    .menu-name{
+        width: auto;
+        height: auto;
+        font-size: 16px;
+        align-self: center;
+        padding: 15px;
+    }.menu-price{
+        margin-right: 10px;
+        width: auto;
+        height: auto;
+        margin-top: 20px;
+        font-size: 36px;
+        align-self: end;
+    }
+    .btn{
+        background-color: #D2232A;
+        border-radius: 15px;
+        padding:10px;
+        margin-top:10px;
+        margin-bottom:10px;
+        margin-left:20px;
+        font-size: 18px;
+        text-decoration: none;
+        color: #DCDFE1;
+        font-weight: 300;
+    }
+    .btn:hover{
+        color: #FFEEC0;
+        transition: .3s;
+    }
+    .btn:not(:hover){
+        color: #DCDFE1;
+        transition: .3s;
+    }
+
+</style>
+
+<body>
+<form method="post" th:action="'/Edit/zabronirovannoe/' + ${film.getId()} + '/' + ${mesto.getId()}">
+                    <div class="main-container">
+                        <h3 class="menu-name" th:text="'Адрес кинотеатра: ' + ${kinoteatr.getAdres_kinoteatra()}"> </h3>
+                        <h3 class="menu-name" th:text="'Фильм: ' + ${film.getName_film()}"> </h3>
+                        <h3 class="menu-name" th:text="'Зал: ' + ${zal.getNomer_zala()}"> </h3>
+                        <h3 class="menu-name" th:text="'Ряд: ' + ${ryad.getNomerRyada()}"> </h3>
+                        <h3 class="menu-name" th:text="'Место: ' + ${mesto.getNomerMesta()}"> </h3>
+
+
+                        <button type="submit" class="btn">Добавить</button>
+                    </div>
+</form>
+</body>
+</html>

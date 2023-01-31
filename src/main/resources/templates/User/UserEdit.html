@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+    <div th:insert="static/Fragment :: header1"></div>
+</head>
+
+<style>
+  body {
+    background: #fffaf0;
+    font-family: 'Segoe UI Semibold',serif;
+  }
+  .center-items{
+    text-align: center;
+    vertical-align: middle;
+  }
+  h1{
+    font-size: 28px;
+    color: #DCDFE1;
+    text-decoration: none;
+    font-weight: 500;
+    text-align: center;
+    margin: 15px;
+    vertical-align: middle;
+  }
+  .formStyle{
+    margin: 35px auto;
+    border-radius: 15px;
+    padding: 4px 12px;
+    width: 750px;
+    background: #FFEEC0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .formItem{
+    font-size: 24px;
+    font-weight: 500;
+    background-color: #3C3F41;
+    border-radius: 15px;
+    padding: 12px;
+    color: #87939A;
+    border-color: #675a2d;
+    border-style: solid;
+    margin: 7px;
+    border-width: 1px;
+    width: 710px;
+  }
+  .errorView{
+    margin-left: 7px;
+    color: #C75450;
+  }
+  .btn{
+        background-color: #D2232A;
+        border-radius: 10px;
+        padding:10px;
+        font-size: 18px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-decoration: none;
+        color: #DCDFE1;
+        font-weight: 300;
+    }
+    .btn:hover{
+        color: #FFEEC0;
+        transition: .3s;
+    }
+    .btn:not(:hover){
+        color: #DCDFE1;
+        transition: .3s;
+    }
+
+</style>
+
+<body>
+        <div class="formStyle">
+            <form method="post" th:each="el: ${User}">
+                <input class="formItem" name="surname" th:value="${el.getSurname()}">
+                <input class="formItem" name="name" th:value="${el.getName()}">
+                <input class="formItem" name="middleName" th:value="${el.getMiddleName()}">
+                <input class="formItem" name="number_passport" th:value="${el.getNumber_passport()}">
+                <input class="formItem" name="serial_passport" th:value="${el.getSerial_passport()}">
+                <input class="formItem" name="username" th:value="${el.getUsername()}">
+                <input class="formItem" name="password" th:value="${el.getPassword()}">
+                <input class="formItem" name="active" th:value="${el.getActive()}">
+
+                <input class = "btn" type="submit" value="Изменить" style="background:Orange; margin-left:10px" >
+            </form>
+        </div>
+</body>
+</html>

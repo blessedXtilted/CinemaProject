@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+    <div th:insert="static/Fragment :: header3"></div>
+</head>
+
+<style>
+  *,
+  *::before,
+  *::after{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI Semibold', serif;
+  }
+
+  body{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-color: #212529;
+  }
+  .log-in-header{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      height: 80px;
+      width: 100%;
+      background: #FFEEC0;
+  }
+  img{
+      height: auto;
+      width: 100px;
+  }
+  .sign-in-main{
+    height: 700px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-top: 20px;
+    background: #211E17;
+    border-radius: 10px;
+    border-width: medium;
+    border-style: solid;
+    border-color: #FFEEC0;
+  }
+  .sign-in-main:hover{
+      border-color: #C75450;
+      transition: .5s;
+  }
+  .sign-in-main:not(:hover){
+      border-color: #FFEEC0;
+      transition: .5s;
+  }
+  .text-input{
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      border-style: solid;
+      margin-top: 20px;
+      font-size: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-color: #C75450;
+      background-color: whitesmoke;
+      outline: none;
+  }
+  .text-input:focus{
+      border-color: #D2232A;
+  }
+  .log-in-button{
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-size: 20px;
+      padding: 10px;
+      background-color: #D2232A;
+      color: floralwhite;
+      text-align: center;
+      display: block;
+      border-style: none;
+  }
+  a{
+      text-decoration: none;
+  }
+  .reg-button{
+      width: auto;
+      height: auto;
+      border-radius: 10px;
+      margin-top: 20px;
+      font-size: 20px;
+      padding: 10px;
+      background-color: floralwhite;
+      border-style: solid;
+      border-color: #D2232A;
+      text-align: center;
+      display: block;
+  }
+</style>
+
+<body>
+<div style="padding: 5px; margin-left: 5px">
+    <div th:if="${error}">
+        Такой пользователь уже существует.
+    </div>
+
+    <p th:text="${error}"></p>
+
+    <form action="/registration" class="sign-in-main" method="post">
+
+        <input name="surname" class="text-input" type="text" placeholder="Фамилия" style="margin:10px" ><br>
+        <input name="name" class="text-input" type="text" placeholder="Имя" style="margin:10px" ><br>
+        <input name="middleName" class="text-input" type="text" placeholder="Отчество" style="margin:10px"><br>
+        <input name="serial_passport" class="text-input" type="number" maxlength="4" placeholder="Серия паспорта" style="margin:10px"><br>
+        <input name="number_passport" class="text-input" type="number" maxlength="6" placeholder="Номер паспорта" style="margin:10px"><br>
+        <input type="text" placeholder="Логин" class="text-input" name="username" style="margin:10px"/><br>
+        <input type="password" placeholder="Пароль" class="text-input" name="password" style="margin:10px"/><br>
+
+        <div><input type="submit" class="reg-button" value="Зарегистрироваться"/></div>
+    </form>
+</div>
+</body>
+</html>

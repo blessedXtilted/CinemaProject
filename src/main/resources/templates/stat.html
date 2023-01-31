@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>\</title>
+</head>
+
+<style>
+    .btn{
+        background-color: #D2232A;
+        border-radius: 10px;
+        padding:15px;
+        font-size: 18px;
+        text-decoration: none;
+        color: #DCDFE1;
+        font-weight: 300;
+    }
+    .btn:hover{
+        color: #FFEEC0;
+        transition: .3s;
+    }
+    .btn:not(:hover){
+        color: #DCDFE1;
+        transition: .3s;
+    }
+</style>
+
+<body>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+  window.onload = function () {
+    var dataPoints = [];
+    var chart = new CanvasJS.Chart("chartContainer",{
+      title:{
+        text:"Статистика проданных билетов"
+      },
+      data: [{
+
+        type: "column",
+        dataPoints : dataPoints,
+      }]
+    });
+    $.getJSON("http://localhost:8080/api", function(data) {
+      $.each(data, function(key, value){
+      console.log(value);
+        dataPoints.push({label:(value.name) , y: parseInt(value.amount)});
+      });
+      chart.render();
+    });
+  }
+</script>
+<div id="chartContainer" style="height: 300px; width: 100%;"></div>
+
+<div style="display: flex; margin-top:20px; width:100%; flex-direction:columne; justify-content:center; align-items:center">
+<a class="btn" style="margin-right: 20px" th:href="'/BackupImport'">Импорт</a>
+<a class="btn" th:href="'/BackupExport'">Экспорт</a>
+<a class="btn" style="margin-left: 20px" th:href="'/admin'">Отмена</a>
+</div>
+</body>
+</html>

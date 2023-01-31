@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление фильма</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+          crossorigin="anonymous">
+    <div th:insert="static/Fragment :: header1"></div>
+</head>
+
+<style>
+  body {
+    background: #fffaf0;
+    font-family: 'Segoe UI Semibold',serif;
+  }
+  .center-items{
+    text-align: center;
+    vertical-align: middle;
+  }
+  h1{
+    font-size: 28px;
+    color: #DCDFE1;
+    text-decoration: none;
+    font-weight: 500;
+    text-align: center;
+    margin: 15px;
+    vertical-align: middle;
+  }
+  .formStyle{
+    margin: 35px auto;
+    border-radius: 15px;
+    padding: 4px 12px;
+    width: 750px;
+    background: #FFEEC0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+  .formItem{
+    font-size: 24px;
+    font-weight: 500;
+    background-color: #3C3F41;
+    border-radius: 15px;
+    padding: 12px;
+    color: #87939A;
+    border-color: #675a2d;
+    border-style: solid;
+    margin: 7px;
+    border-width: 1px;
+    width: 710px;
+  }
+  .errorView{
+    margin-left: 7px;
+    color: #C75450;
+  }
+  .btn{
+        background-color: #D2232A;
+        border-radius: 10px;
+        padding:15px;
+        font-size: 18px;
+        text-decoration: none;
+        color: #DCDFE1;
+        font-weight: 300;
+    }
+    .btn:hover{
+        color: #FFEEC0;
+        transition: .3s;
+    }
+    .btn:not(:hover){
+        color: #DCDFE1;
+        transition: .3s;
+    }
+
+    .select-css {
+        display: block;
+        font-size: 16px;
+        font-family: 'Segoe UI Semibold', serif;
+        font-weight: 500;
+        color: #87939A;
+        width: 98%;
+        /*box-sizing: border-box;*/
+        margin: 7px;
+        padding: 12px;
+        border: 1px solid #675a2d;
+        box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04);
+        border-radius: 15px;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: #3C3F41;
+        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'), linear-gradient(to bottom, #3C3F41 0%, #3C3F41 100%);
+        background-repeat: no-repeat, repeat;
+        background-position: right .7em top 50%, 0 0;
+        background-size: .65em auto, 100%;
+    }
+
+</style>
+
+<body>
+<form th:object="${films}" method="post">
+        <input class="formItem" th:field="*{name_film}" name="nameFilm" type="text" placeholder="название фильма" >
+        <input class="formItem" th:field="*{data_nachala}" name="dataNachala" type="text" placeholder="Дата начала" >
+        <input class="formItem" th:field="*{dlitelnost_filma}" name="dlitelnostFilma" type="text" placeholder="Длительность фильма">
+        <input class="formItem" th:field="*{url}" name="url" type="text" placeholder="Ссылка на картинку">
+
+        <p>
+            <select class="select-css"  name="pname" >
+        <div th:each="element : ${kinoteatr}">
+            <option th:text="${element.getAdres_kinoteatra}"></option>
+        </div>
+        </select><br>
+        </p>
+
+    <div style="display: flex; width:100%; flex-direction:columne; justify-content:center; align-items:center">
+        <input class="btn" style="margin-right:20px" type="submit" value="Добавить фильм">
+        <a class="btn" href="/">Отмена</a>
+    </div>
+</form>
+
+
+</body>
+</html>
